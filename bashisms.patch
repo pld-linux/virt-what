@@ -1,0 +1,32 @@
+--- /home/users/glen/rpm/packages/BUILD.x86_64-linux/virt-what-1.13/virt-what.in	2013-04-17 22:16:22.000000000 +0300
++++ ../virt-what.in	2013-09-01 00:34:41.362648435 +0300
+@@ -1,4 +1,4 @@
+-#!/bin/bash -
++#!/bin/sh -
+ # @configure_input@
+ # Copyright (C) 2008-2011 Red Hat Inc.
+ #
+@@ -33,12 +33,12 @@
+ 
+ VERSION="@VERSION@"
+ 
+-function fail {
++fail() {
+     echo "virt-what: $1" >&2
+     exit 1
+ }
+ 
+-function usage {
++usage() {
+     echo "virt-what [options]"
+     echo "Options:"
+     echo "  --help          Display this help"
+@@ -75,7 +75,7 @@
+ 
+ # Check we're running as root.
+ 
+-if [ "x$root" = "x" ] && [ "$EUID" -ne 0 ]; then
++if [ "x$root" = "x" ] && [ "$(id -u)" -ne 0 ]; then
+     fail "this script must be run as root"
+ fi
+ 

@@ -10,6 +10,7 @@ License:	GPL v2+
 Group:		Applications/Emulators
 Source0:	http://people.redhat.com/~rjones/virt-what/files/%{name}-%{version}.tar.gz
 # Source0-md5:	28d3be1d8981e7fd83c012ebf0d95bb1
+Patch0:		bashisms.patch
 URL:		http://people.redhat.com/~rjones/virt-what/
 # This is provided by the build root, but we make it explicit
 # anyway in case this was dropped from the build root in future.
@@ -56,6 +57,7 @@ Current types of virtualization detected:
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure

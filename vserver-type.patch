@@ -1,0 +1,14 @@
+--- virt-what-1.13/virt-what.in	2013-09-01 00:35:37.865167616 +0300
++++ virt-what-1.13/virt-what.in	2013-09-01 00:40:26.000000000 +0300
+@@ -147,6 +147,11 @@
+ # Check for Linux-VServer
+ if cat "${root}/proc/self/status" | grep -q "VxID: [0-9]*"; then
+     echo linux_vserver
++    if grep -q "VxID: 0$" "${root}/proc/self/status"; then
++        echo linux_vserver_host
++    else
++        echo linux_vserver_guest
++    fi
+ fi
+ 
+ # Check for UML.
